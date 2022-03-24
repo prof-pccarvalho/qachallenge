@@ -1,0 +1,22 @@
+{
+  "name": "qachallenge",
+  "version": "1.0.0",
+  "description": "Avaliar as habilidades na",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prof-pccarvalho/qachallenge.git"
+  },
+  "author": "PC Carvalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prof-pccarvalho/qachallenge/issues"
+  },
+  "homepage": "https://github.com/prof-pccarvalho/qachallenge#readme",
+  "devDependencies": {
+    "cypress": "^9.5.2"
+  }
+}
