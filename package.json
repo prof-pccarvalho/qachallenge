@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/prof-pccarvalho/qachallenge#readme",
   "devDependencies": {
-    "cypress": "^9.5.2"
+    "cypress": "^9.5.2",
+    "faker": "^5.5.3"
   }
 }
