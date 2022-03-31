@@ -52,6 +52,126 @@ describe('Signin', () => {
         cy.get('#submitAccount > span').click()
         cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', 'My account')
     })
+
+    it('Authentication-Already Registered', () => {
+
+        var login = LoginFactory.sigin()
+
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+
+        cy.get('#email').type('123456@aol.com')
+        cy.get('#passwd').type('12345')
+        cy.get('#SubmitLogin > span > i').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', 'My account')
+    })
+
+    it('Authentication- Incorrect password', () => {
+
+        var login = LoginFactory.sigin()
+
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+
+        cy.get('#email').type('123456@aol.com')
+        cy.get('#passwd').type('123')
+        cy.get('#SubmitLogin > span > i').click()
+        cy.get('#center_column > div.alert.alert-danger > ol > li').should('have.text', 'Invalid password.')
+    })
+
+    it('Authentication- Incorrect email', () => {
+
+        var login = LoginFactory.sigin()
+
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+
+        cy.get('#email').type('123456aol.com')
+        cy.get('#passwd').type('123')
+        cy.get('#SubmitLogin > span > i').click()
+        cy.get('#center_column > div.alert.alert-danger > ol > li').should('have.text', 'Invalid email address.')
+    })
+
+    it('Authentication- Blank email and password', () => {
+
+        var login = LoginFactory.sigin()
+
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+
+        cy.get('#email').type(' ')
+        cy.get('#passwd').type(' ')
+        cy.get('#SubmitLogin > span > i').click()
+        cy.get('#center_column > div.alert.alert-danger > ol > li').should('have.text', 'An email address required.')
+    })
+
+    it('Authentication- Blank password', () => {
+
+        var login = LoginFactory.sigin()
+
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+
+        cy.get('#email').type('123456@aol.com')
+        cy.get('#passwd').type(' ')
+        cy.get('#SubmitLogin > span > i').click()
+        cy.get('#center_column > div.alert.alert-danger > ol > li').should('have.text', 'Password is required.')
+    })
+
+    it('Authentication- Forgot your password', () => {
+
+        var login = LoginFactory.sigin()
+
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+
+        cy.get('#email').type('123456@aol.com')
+        cy.get('#login_form > div > p.lost_password.form-group > a').click()
+        cy.get('#center_column > div > h1').should('have.text', 'Forgot your password?')
+        cy.get('#email').type('123456@aol.com')
+        cy.get('#form_forgotpassword > fieldset > p > button > span').should('have.text', 'Retrieve Password').click()
+        cy.get('#center_column > div > p').should('have.text', 'A confirmation email has been sent to your address: 123456@aol.com')
+    })
+
+    it('Authentication-Create an account-Incorrect email', () => {
+
+        var login = LoginFactory.sigin()
+        login.Email = '1234aol.com'
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+        cy.get('#email_create').type(login.Email)
+        cy.get('#SubmitCreate').click()
+       
+        cy.get('#create_account_error > ol > li').should('have.text', 'Invalid email address.')
+    })
+
+    it('Authentication-Create an account-Blank email', () => {
+
+        var login = LoginFactory.sigin()
+        login.Email = ' '
+        cy.viewport(1440, 900)
+        cy.visit('http://automationpractice.com/index.php')
+        cy.get('a.login').click()
+        cy.get('#columns > div.breadcrumb.clearfix > span.navigation_page').should('have.text', '	Authentication')
+        cy.get('#email_create').type(login.Email)
+        cy.get('#SubmitCreate').click()
+       
+        cy.get('#create_account_error > ol > li').should('have.text', 'Invalid email address.')
+    })
 })
 
  

@@ -235,7 +235,7 @@ jobs:
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 >>>>>>>>>>>
-open the gear settings tab of the Github page in a new tab
+open the engine settings tab of the Github page in a new tab
 click on Secrets in this new tab and then on Actions
 click on New repository secret
 put the same name as the wait-on of the workflow-cypress.yml file = BASE_URL
