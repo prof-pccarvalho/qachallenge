@@ -37,7 +37,9 @@ An open Pull Request for this repository, with the entire solution implemented i
 #### Initial procedures :running: :running: :running:
 
 :small_blue_diamond: open hyper and navigate to project folder
+
 :small_blue_diamond: run npm init and answer questions
+
                         package name:**project name**
                         version:**retain**
                         description: **short description**
@@ -48,12 +50,19 @@ An open Pull Request for this repository, with the entire solution implemented i
                         author:**your name**
                         license(ISC): **MIT**
 :small_blue_diamond: check if package package.json was created witj ls command in hyper
+
 :small_blue_diamond: run npm i cypress --save-dev
+
 :small_blue_diamond: run npm run test
+
 :small_blue_diamond: run code .
+
 :small_blue_diamond: in the explorer (VSCode), find integration folder and delete sub folder was there
+
 :small_blue_diamond: create a .gitignore file in the VSCode root with the name of the folders and files you want to delete. In this case, node_modules
+
 :small_blue_diamond: To update the repository in git, follow the steps below in hyper, after create o repository in git
+
                             echo "# qachallenge" >> README.md
                             git init
                             git add README.md
@@ -65,8 +74,11 @@ An open Pull Request for this repository, with the entire solution implemented i
 
 ##### Creating the automation
 ** :bar_chart: First test case
+
 :ballot_box_with_check: in the explorer on the VSCode, open integration folder and create home.spec.js file.
+
 :ballot_box_with_check: In the home.spec.js put:
+
                 describe('home page', ()=>{
                     it('the home page must be online', ()=>{
                         cy.viewport(1440, 900)
@@ -75,12 +87,15 @@ An open Pull Request for this repository, with the entire solution implemented i
                         cy.get('#editorial_block_center > h1').should('have.text', 'Automation Practice Website')
                     })
                 })
+                
 :ballot_box_with_check: run npm run test (case cypress is closed)
+
 :ballot_box_with_check: if all is OK, we have our first successful test case.
 
 ** :bar_chart: Second test case
 :stars: :star:
 :statue_of_liberty: in the explorer on the VSCode, open integration folder and create login.spec.js file.
+
 :star: In the login.spec.js put:
 
         import LoginFactory from "../factories/LoginFactory"
@@ -140,7 +155,9 @@ An open Pull Request for this repository, with the entire solution implemented i
 
  
 :ballot_box_with_check: in the explorer on the VSCode, cypress root, new folder "factories".
+
 :ballot_box_with_check: in the new folder "factories", create new file "LoginFactory.js".
+
 :ballot_box_with_check: in the 'LoginFactory.js" put:
 
                         var faker = require('faker')
